@@ -3,9 +3,15 @@ TITLE Lab Assignment 2 (lab2.asm)
 
 INCLUDE Irvine32.inc
 
+;==========================
+;PROGRAM AIMS TO CALCULATE f(x,y,z) = 1 + x + y^2 + z^3
+;UPON GIVEN INPUT
+;ONLY CALCULATES THESE VALUES FOR POSITIVE NUMBERS
+;===========================
+
 .data
 
-	prompt BYTE "Enter the value of x : ", 0
+	prompt BYTE "Enter the value of x : ", 0 ;Each string with null terminator
 	prompt2 BYTE "Enter the value of y : ", 0
 	prompt3 BYTE "Enter the value of z : ", 0
 	answer BYTE "The value of f(x,y,z) is : ", 0
@@ -15,7 +21,7 @@ INCLUDE Irvine32.inc
 
 main PROC
 	mov eax, 0 
-	mov edx, OFFSET prompt
+	mov edx, OFFSET prompt ;move first address to EDX so WriteString can display
 	call WriteString
 	call ReadHex;====INPUT===x is read
 	add eax, 1 ; x + 1
@@ -55,7 +61,7 @@ squareValues PROC USES ecx edi
 	ret
 	
 	
-squareValues ENDP
+squareValues ENDP;PROCEDURE THAT CALCULATES THE SQUARE OF VALUE
 
 cubeValues PROC USES ecx edi
 	
@@ -76,7 +82,7 @@ cubeValues PROC USES ecx edi
 	ret
 
 
-cubeValues ENDP
+cubeValues ENDP ;PROCEDURE THAT CALCULATES THE CUBE OF A VALUE
 
 
 END main
